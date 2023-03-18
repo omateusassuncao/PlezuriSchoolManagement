@@ -9,7 +9,7 @@ while (ShowMenu());
 
 void EditarCadastroEscola()
 {
-    Console.WriteLine("Escolha uma escola:");
+    Console.WriteLine("Escolha uma das " + Escola.TotalDeEscolas + " escolas:");
     int i = 1;
     foreach (Escola escola in listaEscolas)
     {

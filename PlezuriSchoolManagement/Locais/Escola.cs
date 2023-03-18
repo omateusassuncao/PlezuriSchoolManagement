@@ -10,16 +10,6 @@ namespace PlezuriSchoolManagement.Locais
 {
     internal class Escola
     {
-        public Escola(string nome, string descricao, string endereco, string estado, string cidade, int cEP, string tipo)
-        {
-            Nome = nome;
-            Descricao = descricao;
-            Endereco = endereco;
-            Estado = estado;
-            Cidade = cidade;
-            CEP = cEP;
-            Tipo = tipo;
-        }
 
         public string Nome { get; set; }
         public string Descricao { get; set; }
@@ -30,6 +20,19 @@ namespace PlezuriSchoolManagement.Locais
         public string Tipo { get; set; }
         private List<Aluno> Alunos { get; set; }
 
+        public static int TotalDeEscolas { get; private set; }
+
+        public Escola(string nome, string descricao, string endereco, string estado, string cidade, int cEP, string tipo)
+        {
+            this.Nome = nome;
+            this.Descricao = descricao;
+            this.Endereco = endereco;
+            this.Estado = estado;
+            this.Cidade = cidade;
+            this.CEP = cEP;
+            this.Tipo = tipo;
+            TotalDeEscolas++;
+        }
 
         public void AddAluno(Aluno aluno)
         {
