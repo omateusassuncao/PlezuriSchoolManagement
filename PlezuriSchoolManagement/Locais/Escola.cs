@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,7 +28,7 @@ namespace PlezuriSchoolManagement.Locais
         public string Cidade { get; set; }
         public int CEP { get; set; }
         public string Tipo { get; set; }
-        public List<Aluno> Alunos { get; set; }
+        private List<Aluno> Alunos { get; set; }
 
 
         public void AddAluno(Aluno aluno)
@@ -42,6 +43,67 @@ namespace PlezuriSchoolManagement.Locais
 
             Alunos.Remove(aluno);
 
+        }
+
+        internal void EditarEscola()
+        {
+            ShowDadosEscola();
+            Console.WriteLine("Qual dado vocês quer editar?");
+            Console.WriteLine("1. Nome");
+            Console.WriteLine("2. Descrição");
+            Console.WriteLine("3. Endereço");
+            Console.WriteLine("4. Estado");
+            Console.WriteLine("5. Cidade");
+            Console.WriteLine("6. CEP");
+            Console.WriteLine("7. Tipo");
+            
+            switch (int.Parse(Console.ReadLine()))
+            {
+                case 1:
+                    Console.WriteLine("Digite novo valor do NOME:");
+                    this.Nome = Console.ReadLine();
+                    break;
+                case 2:
+                    Console.WriteLine("Digite novo valor do DESCRIÇÃO:");
+                    this.Descricao = Console.ReadLine();
+                    break;
+                case 3:
+                    Console.WriteLine("Digite novo valor do ENDEREÇO:");
+                    this.Endereco = Console.ReadLine();
+                    break;
+                case 4:
+                    Console.WriteLine("Digite novo valor do ESTADO:");
+                    this.Estado = Console.ReadLine();
+                    break;
+                case 5:
+                    Console.WriteLine("Digite novo valor do CIDADE:");
+                    this.Cidade = Console.ReadLine();
+                    break;
+                case 6:
+                    Console.WriteLine("Digite novo valor do CEP:");
+                    this.CEP = int.Parse(Console.ReadLine());
+                    break;
+                case 7:
+                    Console.WriteLine("Digite novo valor do TIPO:");
+                    this.Tipo = Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("Valor incorreto selecionado");
+                    break;
+
+            }
+        }
+
+        private void ShowDadosEscola()
+        {
+            Console.WriteLine("Dados da escola:");
+            Console.WriteLine("Nome: " + this.Nome);
+            Console.WriteLine("Nome: " + this.Descricao);
+            Console.WriteLine("Nome: " + this.Endereco);
+            Console.WriteLine("Nome: " + this.Estado);
+            Console.WriteLine("Nome: " + this.Cidade);
+            Console.WriteLine("Nome: " + this.CEP);
+            Console.WriteLine("Nome: " + this.Tipo);
         }
 
         internal void showAlunos()

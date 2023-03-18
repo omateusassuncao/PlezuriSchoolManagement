@@ -16,6 +16,10 @@ void EditarCadastroEscola()
         Console.WriteLine(i + " " + escola.Nome);
         i++;
     }
+    int o = int.Parse(Console.ReadLine()) - 1;
+    Escola e = listaEscolas[o];
+    e.EditarEscola();
+
 }
 
 void CriarEscola()
@@ -65,22 +69,22 @@ bool ShowMenu()
             EditarCadastroEscola();
             return true;
         break;
-        //case 3:
-        //    escola.DeletarEscola();
-        //    return true;
-        //break;
-        //case 4:
-        //    Aluno aluno = new Aluno();
-        //    return true;
-        //break;
-        //case 5:
-        //    aluno.EditarAluno();
-        //    return true;
-        //break;
-        //case 6:
-        //    aluno.DeletarALuno();
-        //    return true;
-        //break;
+        case 3:
+            //escola.DeletarEscola();
+            return true;
+            break;
+        case 4:
+            //Aluno aluno = new Aluno();
+            return true;
+            break;
+        case 5:
+            //aluno.EditarAluno();
+            return true;
+            break;
+        case 6:
+            //aluno.DeletarALuno();
+            return true;
+            break;
         default:
             return false;
         break;
