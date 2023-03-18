@@ -1,10 +1,11 @@
-﻿using System;
+﻿using PlezuriSchoolManagement.Personas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlezuriSchoolManagement
+namespace PlezuriSchoolManagement.Locais
 {
     internal class Escola
     {
@@ -26,20 +27,20 @@ namespace PlezuriSchoolManagement
         public string Cidade { get; set; }
         public int CEP { get; set; }
         public string Tipo { get; set; }
-        public List<Aluno> Alunos  { get; set; }
+        public List<Aluno> Alunos { get; set; }
 
 
         public void AddAluno(Aluno aluno)
         {
 
-            this.Alunos.Add(aluno);
+            Alunos.Add(aluno);
 
         }
 
         public void RemoveAluno(Aluno aluno)
         {
 
-            this.Alunos.Remove(aluno);
+            Alunos.Remove(aluno);
 
         }
 
@@ -47,10 +48,10 @@ namespace PlezuriSchoolManagement
         {
 
 
-            Console.WriteLine("Lista de alunos da escola " + this.Nome + ": ");
-            for (int i = 0; i < this.Alunos.LongCount(); i++ )
+            Console.WriteLine("Lista de alunos da escola " + Nome + ": ");
+            for (int i = 0; i < Alunos.LongCount(); i++)
             {
-                Console.WriteLine("Aluno " + i+1 + ": " + this.Alunos[i].Nome);
+                Console.WriteLine("Aluno " + i + 1 + ": " + Alunos[i].Nome);
             }
         }
     }

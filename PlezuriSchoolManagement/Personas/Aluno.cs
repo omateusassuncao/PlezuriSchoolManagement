@@ -1,4 +1,4 @@
-﻿namespace PlezuriSchoolManagement
+﻿namespace PlezuriSchoolManagement.Personas
 {
     public class Aluno
     {

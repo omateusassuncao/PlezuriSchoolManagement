@@ -1,5 +1,4 @@
-﻿
-using PlezuriSchoolManagement;
+﻿using PlezuriSchoolManagement.Locais;
 using System.Runtime.ConstrainedExecution;
 
 List<Escola> listaEscolas = new List<Escola>();
