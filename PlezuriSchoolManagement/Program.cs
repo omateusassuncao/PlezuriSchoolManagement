@@ -55,12 +55,12 @@ void CriarFuncionario()
 {
     Escola e = SelecionaEscola();
     Console.WriteLine("Digite os dados a seguir para o novo funcionário da escola " + e.Nome + " :");
-    Console.Write("Nome: ");
+    Console.WriteLine("Nome: ");
     string nome = Console.ReadLine();
-    Console.Write("CPF: ");
-    int cpf = int.Parse(Console.ReadLine());
-    Console.Write("Tipo: (1:Professor, 2:Administrativo, 3:Coordenador/Diretor, 4:Assistente/Operação) ");
-    int tipo = int.Parse(Console.ReadLine())
+    Console.WriteLine("CPF: ");
+    double CPF = int.Parse(Console.ReadLine());
+    Console.WriteLine("Tipo: (1:Professor, 2:Administrativo, 3:Coordenador/Diretor, 4:Assistente/Operação) ");
+    int tipo = int.Parse(Console.ReadLine());
 
     if(tipo == 1)
     {

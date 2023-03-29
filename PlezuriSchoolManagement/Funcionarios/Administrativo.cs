@@ -8,7 +8,7 @@ namespace PlezuriSchoolManagement.Funcionarios
 {
     public class Administrativo : Funcionario
     {
-        public Administrativo(string nome, int cpf, double salario) : base(nome, cpf, salario, 2)
+        public Administrativo(string nome, double CPF, double salario) : base(nome, CPF, salario, 2)
         {
         }
 

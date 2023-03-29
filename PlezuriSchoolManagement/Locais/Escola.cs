@@ -35,6 +35,8 @@ namespace PlezuriSchoolManagement.Locais
             this.CEP = cEP;
             this.Tipo = tipo;
             this.SalarioBase = 2000.00;
+            this.Alunos = new List<Aluno>();
+            this.Funcionarios = new List<Funcionario>();
             TotalDeEscolas++;
         }
 
@@ -119,12 +121,12 @@ namespace PlezuriSchoolManagement.Locais
         {
             Console.WriteLine("Dados da escola:");
             Console.WriteLine("Nome: " + this.Nome);
-            Console.WriteLine("Nome: " + this.Descricao);
-            Console.WriteLine("Nome: " + this.Endereco);
-            Console.WriteLine("Nome: " + this.Estado);
-            Console.WriteLine("Nome: " + this.Cidade);
-            Console.WriteLine("Nome: " + this.CEP);
-            Console.WriteLine("Nome: " + this.Tipo);
+            Console.WriteLine("Descrição: " + this.Descricao);
+            Console.WriteLine("Endereço: " + this.Endereco);
+            Console.WriteLine("Estado: " + this.Estado);
+            Console.WriteLine("Cidade: " + this.Cidade);
+            Console.WriteLine("CEP: " + this.CEP);
+            Console.WriteLine("Tipo: " + this.Tipo);
         }
 
         internal void showAlunos()
