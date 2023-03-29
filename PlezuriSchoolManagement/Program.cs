@@ -1,4 +1,9 @@
-﻿using PlezuriSchoolManagement.Funcionarios;
+﻿#region 
+//Essa é uma aplicação em C# com o intuito de aprender sobre a linguagem utilizando o 
+//da
+#endregion
+
+using PlezuriSchoolManagement.Funcionarios;
 using PlezuriSchoolManagement.Locais;
 using System.Runtime.ConstrainedExecution;
 
@@ -74,8 +79,8 @@ void CriarFuncionario()
     }
     else
     {
-        Funcionario funcionario = new Funcionario(nome, cpf, e.GetSalarioBase(), tipo);
-        e.AddFuncionario(funcionario);
+
+        Console.WriteLine("Você selecionou um tipo que não existe");
     }
 
     Console.WriteLine("Funcionário criado: " + listaEscolas.Last().Nome + "(escola: " + e.Nome + ")");

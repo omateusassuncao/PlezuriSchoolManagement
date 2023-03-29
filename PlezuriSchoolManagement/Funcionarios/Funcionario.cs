@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlezuriSchoolManagement.Funcionarios
 {
-    public class Funcionario
+    public abstract class Funcionario
     {
         public Funcionario(string nome, double CPF, double salario, int tipo)
         {
@@ -23,9 +23,6 @@ namespace PlezuriSchoolManagement.Funcionarios
         public int Tipo { get; set; }
         public static int TotalDeFuncionarios { get; private set; }
 
-        public virtual double GetBonificacao()
-        {
-            return this.Salario;
-        }
+        public abstract double GetBonificacao();
     }
 }
