@@ -1,4 +1,5 @@
-﻿using PlezuriSchoolManagement.Personas;
+﻿using PlezuriSchoolManagement.Funcionarios;
+using PlezuriSchoolManagement.Personas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,9 @@ namespace PlezuriSchoolManagement.Locais
         public string Cidade { get; set; }
         public int CEP { get; set; }
         public string Tipo { get; set; }
+        public double SalarioBase { get; set; }
         private List<Aluno> Alunos { get; set; }
+        private List<Funcionario> Funcionarios { get; set; }
 
         public static int TotalDeEscolas { get; private set; }
 
@@ -31,20 +34,35 @@ namespace PlezuriSchoolManagement.Locais
             this.Cidade = cidade;
             this.CEP = cEP;
             this.Tipo = tipo;
+            this.SalarioBase = 2000.00;
             TotalDeEscolas++;
         }
 
         public void AddAluno(Aluno aluno)
         {
 
-            Alunos.Add(aluno);
+            this.Alunos.Add(aluno);
 
         }
 
         public void RemoveAluno(Aluno aluno)
         {
 
-            Alunos.Remove(aluno);
+            this.Alunos.Remove(aluno);
+
+        }
+
+        public void AddFuncionario(Funcionario funcionario)
+        {
+
+            this.Funcionarios.Add(funcionario);
+
+        }
+
+        public void RemoveFuncionario(Funcionario funcionario)
+        {
+
+            this.Funcionarios.Remove(funcionario);
 
         }
 
@@ -114,10 +132,26 @@ namespace PlezuriSchoolManagement.Locais
 
 
             Console.WriteLine("Lista de alunos da escola " + Nome + ": ");
-            for (int i = 0; i < Alunos.LongCount(); i++)
+            for (int i = 0; i < this.Alunos.LongCount(); i++)
             {
-                Console.WriteLine("Aluno " + i + 1 + ": " + Alunos[i].Nome);
+                Console.WriteLine("Aluno " + i + 1 + ": " + this.Alunos[i].Nome);
             }
+        }
+
+        internal void showFuncionarios()
+        {
+
+
+            Console.WriteLine("Lista de funcionarios da escola " + Nome + ": ");
+            for (int i = 0; i < this.Funcionarios.LongCount(); i++)
+            {
+                Console.WriteLine("Funcionario " + i + 1 + ": " + this.Funcionarios[i].Nome);
+            }
+        }
+
+        internal double GetSalarioBase()
+        {
+            return this.SalarioBase;
         }
     }
 }
