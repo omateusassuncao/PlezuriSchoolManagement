@@ -12,7 +12,7 @@ namespace PlezuriSchoolManagement.Funcionarios
         {
         }
 
-        public double GetBonificacao()
+        public override double GetBonificacao()
         {
             return this.Salario * 1.15;
         }

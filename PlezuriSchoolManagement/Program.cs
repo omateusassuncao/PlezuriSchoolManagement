@@ -5,9 +5,11 @@
 
 using PlezuriSchoolManagement.Funcionarios;
 using PlezuriSchoolManagement.Locais;
+using PlezuriSchoolManagement.Parceria;
 using System.Runtime.ConstrainedExecution;
 
 List<Escola> listaEscolas = new List<Escola>();
+List<ParceiroComercial> listaParceiro = new List<ParceiroComercial>();
 
 Console.WriteLine("Olá. Seja bem vindo@ ao Plézuri School Management App!");
 
@@ -24,6 +26,42 @@ Escola SelecionaEscola()
     }
     int o = int.Parse(Console.ReadLine()) - 1;
     return listaEscolas[o];
+}
+
+Funcionario SelecionaFuncionario()
+{
+    Console.WriteLine("Escolha um Funcionário:");
+    int i = 1;
+    foreach (Escola escola in listaEscolas)
+    {
+        int j = 1;
+        List<Funcionario> lf = escola.Funcionarios;
+        foreach (Funcionario funcionario in lf)
+        {
+            Console.WriteLine(i + "" + j + " :" + funcionario.Nome);
+            j++;
+        }
+        i++;
+    }
+    int o = int.Parse(Console.ReadLine());
+    char[] so = o.ToString().ToCharArray();
+    int e = int.Parse(so[0].ToString()) - 1;
+    int f = int.Parse(so[1].ToString()) - 1;
+
+    return listaEscolas[e].Funcionarios[f];
+}
+
+ParceiroComercial SelecionaParceiro()
+{
+    Console.WriteLine("Escolha um Parceiro:");
+    int i = 1;
+    foreach (ParceiroComercial parceiro in listaParceiro)
+    {
+        Console.WriteLine(i + " " + parceiro.Nome);
+        i++;
+    }
+    int o = int.Parse(Console.ReadLine()) - 1;
+    return listaParceiro[o];
 }
 
 void EditarCadastroEscola()
@@ -69,12 +107,14 @@ void CriarFuncionario()
 
     if(tipo == 1)
     {
-        Professor funcionario = new Professor(nome, cpf, e.GetSalarioBase());
+        Professor funcionario = new Professor(nome, CPF, e.GetSalarioBase());
         e.AddFuncionario(funcionario);
     }
     else if (tipo == 2)
     {
-        Administrativo funcionario = new Administrativo(nome, cpf, e.GetSalarioBase());
+        Console.WriteLine("Senha: ");
+        string senha = Console.ReadLine();
+        Administrativo funcionario = new Administrativo(nome, CPF, e.GetSalarioBase(), senha);
         e.AddFuncionario(funcionario);
     }
     else
@@ -85,6 +125,68 @@ void CriarFuncionario()
 
     Console.WriteLine("Funcionário criado: " + listaEscolas.Last().Nome + "(escola: " + e.Nome + ")");
 }
+
+void CriarParceiroComercial()
+{
+    Console.WriteLine("Digite os dados a seguir para o novo Parceiro Comercial");
+    Console.WriteLine("Nome: ");
+    string nome = Console.ReadLine();
+    Console.WriteLine("Descrição: ");
+    string descricao = Console.ReadLine();
+    Console.WriteLine("senha: ");
+    string senha = Console.ReadLine();
+
+    listaParceiro.Add(new ParceiroComercial(nome, descricao, senha));
+
+    Console.WriteLine("Parceiro "+ listaParceiro.Last().Nome + " criado corretamente");
+}
+
+void Autenticar()
+{
+    Console.WriteLine("Qual perfil deseja Autenticar? 1 - Funcionário ou 2 - Parceiro Comercial ? ");
+    int opcao = int.Parse(Console.ReadLine());
+    string senha = null;
+    switch (opcao)
+    {
+        case 1:
+            Funcionario funcionario = SelecionaFuncionario();
+            if (funcionario.Tipo == 2)
+            {
+                Administrativo administrativo = (Administrativo)funcionario;
+                Console.WriteLine("Digite a senha:");
+                senha = Console.ReadLine();
+                if (administrativo.Autenticar(senha)) 
+                {
+                    Console.WriteLine("Autenticado");
+                }
+                else 
+                {
+                    Console.WriteLine("Senha incorreta.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Não é um funcionário autenticável");
+            }
+        break;
+        case 2:
+            ParceiroComercial parceiro = SelecionaParceiro();
+            Console.WriteLine("Digite a senha:");
+            senha = Console.ReadLine();
+            if (parceiro.Autenticar(senha))
+            {
+                Console.WriteLine("Autenticado");
+            }
+            else
+            {
+                Console.WriteLine("Senha incorreta.");
+            }
+            break;
+        default:
+        break;
+    }
+}
+
 
 bool ShowMenu()
 {
@@ -100,6 +202,8 @@ bool ShowMenu()
     Console.WriteLine("7. Funcionarios - Cadastrar Funcionari@");
     Console.WriteLine("8. Funcionarios - Editar Funcionari@");
     Console.WriteLine("9. Funcionarios - Deletar Funcionari@");
+    Console.WriteLine("10. Parceiro - Criar Parceiro Comercial");
+    Console.WriteLine("20 - Autenticar");
     Console.WriteLine("0. SAIR");
 
     int opcao = int.Parse(Console.ReadLine());
@@ -114,26 +218,18 @@ bool ShowMenu()
             EditarCadastroEscola();
             return true;
         break;
-        case 3:
-            //escola.DeletarEscola();
-            return true;
-            break;
-        case 4:
-            //Aluno aluno = new Aluno();
-            return true;
-            break;
-        case 5:
-            //aluno.EditarAluno();
-            return true;
-            break;
-        case 6:
-            //aluno.DeletarALuno();
-            return true;
-            break;
         case 7:
             CriarFuncionario();
             return true;
-            break;
+        break;
+        case 10:
+            CriarParceiroComercial();
+            return true;
+        break;
+        case 20:
+            Autenticar();
+            return true;
+        break;
         default:
             return false;
         break;

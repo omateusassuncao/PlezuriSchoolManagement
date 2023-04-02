@@ -21,7 +21,7 @@ namespace PlezuriSchoolManagement.Locais
         public string Tipo { get; set; }
         public double SalarioBase { get; set; }
         private List<Aluno> Alunos { get; set; }
-        private List<Funcionario> Funcionarios { get; set; }
+        public List<Funcionario> Funcionarios { get; set; }
 
         public static int TotalDeEscolas { get; private set; }
 
